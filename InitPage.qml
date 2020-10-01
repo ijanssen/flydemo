@@ -6,6 +6,8 @@ Page {
     id: page
     title: qsTr("Init")
 
+    property int ssize: 10
+
     ColumnLayout{
         spacing: 2
         anchors.centerIn: parent
@@ -30,6 +32,9 @@ Page {
             stepSize: 1
         }
 
+        Item {
+            height: 30
+        }
 
         Row {
             spacing: 20
@@ -52,6 +57,47 @@ Page {
             stepSize: 1
         }
 
+        Rectangle {
+            id: cell
+            width: 150
+            height: 150
+
+            border.width: 1
+
+
+            Component.onCompleted: {
+                var n = Math.ceil(Math.sqrt(10));
+                ssize = (cell.width - 2) / n - 2;
+
+            }
+            Connections {
+                target: slidern
+                function onValueChanged() {
+                    var n = Math.ceil(Math.sqrt(slidern.value));
+                    ssize = (cell.width - 2) / n - 2;
+                }
+            }
+
+
+            Flow {
+                anchors.fill: parent
+                anchors.margins: 1
+                spacing: 2
+                Repeater {
+                    model: slidern.value
+                    delegate: Fly {
+                        dead: false
+                        width: ssize
+                        height: ssize
+                    }
+                }
+            }
+        }
+
+        Item {
+            height: 30
+        }
+
         Row {
             spacing: 20
             Label {
@@ -62,8 +108,17 @@ Page {
                 id: genon
             }
 
+        }
+
+        Row {
+            visible: genon.checked
+
+            spacing: 20
+            Label {
+                text: qsTr("Number: ")
+            }
+
             TextField {
-                visible: genon.checked
                 enabled: false
                 text: slidernum.value
             }
@@ -78,6 +133,9 @@ Page {
             stepSize: 1
         }
 
+        Item {
+            height: 30
+        }
 
         Button {
             id: button
