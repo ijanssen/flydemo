@@ -142,11 +142,7 @@ void Simulator::timeIteration(bool startNext)
     currTime = currTime0 + elapsedTimer.elapsed();
     emit currTimeChanged(currTime);
     qDebug() << currTime;
-    while (true) {
-        if (queue.size() == 0 && deathQueue.size() == 0) {
-            // end
-            return;
-        }
+    while (!queue.empty() || !deathQueue.empty()) {
         quint64 minMoveTime = std::numeric_limits<quint64>::max();
         if (queue.size() > 0)
             minMoveTime = queue.top()->m_nextMove;
@@ -164,7 +160,6 @@ void Simulator::timeIteration(bool startNext)
             updateCell(deathQueue.top()->xcell, deathQueue.top()->ycell);
             deathQueue.pop();
         } else {
-            qDebug() << "try";
             FlyPtr fly = queue.top();
             queue.pop();
             if (!fly->dead) {
@@ -186,8 +181,9 @@ void Simulator::updateNextMoveTime(const Simulator::FlyPtr &fly)
 void Simulator::tryDoMovement(const Simulator::FlyPtr &fly)
 {
     const quint32 nxcell = fly->xcell + getRandom((fly->xcell > 0) ? 0 : 1, (fly->xcell < m_M - 1) ? 2 : 1) - 1;
-    const quint32 nycell = fly->ycell + getRandom((fly->ycell > 0) ? 0 : 1, (fly->ycell < m_M - 1) ? 2 : 1) - 1;
-    // TODO
+    const quint32 nycell = fly->ycell + ((nxcell != fly->xcell) ?
+            (getRandom((fly->ycell > 0) ? 0 : 1, (fly->ycell < m_M - 1) ? 2 : 1) - 1) :
+            (getRandom((fly->ycell > 0) ? 0 : 1, (fly->ycell < m_M - 1) ? 1 : 0) * 2 - 1));
     updateNextMoveTime(fly);
     CellType &ncell = field[nycell][nxcell];
     if (ncell.size() >= m_N) {
