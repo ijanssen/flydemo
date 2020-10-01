@@ -51,7 +51,7 @@ private:
     std::vector<std::vector<CellType>> field;
 
     std::priority_queue<FlyPtr, std::vector<FlyPtr>, FlyCompare> queue;
-    std::priority_queue<FlyPtr, std::vector<FlyPtr>, FlyCompare> deathQueue;
+    std::priority_queue<FlyPtr, std::vector<FlyPtr>, FlyDeathCompare> deathQueue;
 
     QTimer *timer;
     quint64 currTime;
