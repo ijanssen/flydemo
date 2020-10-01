@@ -141,7 +141,7 @@ void Simulator::timeIteration(bool startNext)
 {
     currTime = currTime0 + elapsedTimer.elapsed();
     emit currTimeChanged(currTime);
-    qDebug() << currTime;
+    //qDebug() << currTime;
     while (!queue.empty() || !deathQueue.empty()) {
         quint64 minMoveTime = std::numeric_limits<quint64>::max();
         if (queue.size() > 0)
@@ -209,8 +209,8 @@ void Simulator::createNewFly(quint32 t, quint32 xcell, quint32 ycell)
     if (cell.size() >= m_N)
         return;
     qDebug() << "Create with " << t << m_M * t;
-    const quint64 death = m_M * t * 500;
-//    const quint64 death = m_M * t * 1000; // death time (ms)
+    //const quint64 death = m_M * t * 500;
+    const quint64 death = m_M * t * 1000; // death time (ms)
     FlyPtr fly = std::make_shared<Fly>(t, death, xcell, ycell);
     updateNextMoveTime(fly);
 

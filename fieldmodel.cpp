@@ -130,7 +130,7 @@ void FieldModel::initRandom(quint32 num)
 
 void FieldModel::startEdit()
 {
-
+    // TODO for future
 }
 
 void FieldModel::endEdit()

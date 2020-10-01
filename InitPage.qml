@@ -115,7 +115,7 @@ Page {
 
             spacing: 20
             Label {
-                text: qsTr("Number: ")
+                text: qsTr("Ammount: ")
             }
 
             TextField {

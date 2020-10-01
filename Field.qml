@@ -76,17 +76,23 @@ TableView {
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            //const d = modelData[0] ? "yes" : "no";
                             const t = qsTr("Dead") + ": " + (modelData[0] ? "yes" : "no") + "\n" +
                                     "T: " + modelData[1] + "\n" +
                                     qsTr("Steps") + ": " + modelData[2] + "\n" +
                                     qsTr("Life time") + ": " + modelData[3] / 1000 + qsTr(" secs") + "\n" +
-                                    qsTr("Speed") + ": " + (modelData[3] > 0 ? (1000 * modelData[2] / modelData[3]) : 0) + qsTr(" steps/sec")
+                                    qsTr("Speed") + ": " + (modelData[3] > 0 ? (1000 * modelData[2] / modelData[3]).toFixed(2) : 0) + qsTr(" steps/sec")
                             var x = parent.parent.parent.x
-                            if (y < tableView.contentItem.height / 2)
-                                message.showMessage(x, parent.parent.parent.y + parent.parent.parent.height, t)
-                            else
-                                message.showMessage(x, parent.parent.parent.y, t, true)
+                            var y = parent.parent.parent.y
+
+                            console.log(x, y)
+                            console.log(tableView.contentItem.height)
+                            console.log(tableView.height)
+
+                            const xf = (x >= tableView.contentItem.width / 2)
+                            const yf = (y >= tableView.contentItem.height / 2)
+                            message.showMessage(x + (xf ? 0 : parent.parent.parent.width),
+                                                y + (yf ? 0 : parent.parent.parent.height),
+                                                t, xf, yf)
                         }
                     }
                 }

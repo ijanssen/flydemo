@@ -4,11 +4,11 @@ Rectangle {
     id: msg
 
 
-    function showMessage(x, y, message, yf = false) {
+    function showMessage(x, y, message, xf = false, yf = false) {
         banner.text = message
-        playMessage.start()
-        msg.x = x
+        msg.x = xf ? x - msg.width : x
         msg.y = yf ? y - msg.height : y
+        playMessage.start()
 
     }
 

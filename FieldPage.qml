@@ -36,6 +36,12 @@ Page {
             Label {
                 text: qsTr("Time: ") + fieldModel.currTime / 1000 + qsTr(" sec")
             }
+            Label {
+                width: 40
+            }
+            Label {
+                text: qsTr("Click on fly for more details")
+            }
         }
     }
 
