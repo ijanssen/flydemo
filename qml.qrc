@@ -1,15 +1,15 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
+        <file>qml/main.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>Fly.qml</file>
-        <file>Field.qml</file>
-        <file>FlyMoving.qml</file>
+        <file>qml/Fly.qml</file>
+        <file>qml/Field.qml</file>
+        <file>qml/FlyMoving.qml</file>
         <file>fly.png</file>
-        <file>InitPage.qml</file>
-        <file>FieldEdit.qml</file>
-        <file>FieldEditPage.qml</file>
-        <file>FieldPage.qml</file>
-        <file>Message.qml</file>
+        <file>qml/InitPage.qml</file>
+        <file>qml/FieldEdit.qml</file>
+        <file>qml/FieldEditPage.qml</file>
+        <file>qml/FieldPage.qml</file>
+        <file>qml/Message.qml</file>
     </qresource>
 </RCC>
