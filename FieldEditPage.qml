@@ -7,18 +7,9 @@ Page {
     title: qsTr("Edit init field")
 
     header: ToolBar {
-        contentHeight: button.implicitHeight
+        contentHeight: label.implicitHeight + 4
 
         RowLayout {
-            Label {
-                text: qsTr("Left button click - add fly with selected T, Right button click - remove last fly")
-            }
-            Slider {
-                id: slider
-                from: 1
-                to: 20
-                value: 10
-            }
             Button {
                 id: button
 
@@ -27,6 +18,31 @@ Page {
                     fieldModel.endEdit()
                     stackView.pop()
                 }
+            }
+            Item {
+                width: 20
+            }
+            Label {
+                id: label
+                font.pixelSize: Qt.application.font.pixelSize * 0.9
+                text: qsTr("Left button click -\n add fly with selected T\nRight button click -\n remove last fly")
+            }
+            Item {
+                width: 20
+            }
+            Label {
+                text: qsTr("Select current T:")
+            }
+            TextField {
+                enabled: false
+                text: slider.value
+            }
+            Slider {
+                id: slider
+                from: 1
+                to: 20
+                stepSize: 1
+                value: 10
             }
         }
     }

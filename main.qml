@@ -7,7 +7,7 @@ import org.flydemo 1.0
 ApplicationWindow {
     id: window
     width: 800
-    height: 900
+    height: 1000
     visible: true
     title: qsTr("Fly simulation")
 
