@@ -8,6 +8,8 @@
 #include "fieldmodel.h"
 
 const quint32 kAnimateTime = 500;
+const quint32 kMinRandomT = 1;
+const quint32 kMaxRandomT = 10;
 
 namespace {
 
@@ -103,7 +105,7 @@ void Simulator::onInitRandom(quint32 num)
      for (quint32 i = 0; i < num; i++) {
          const quint32 xcell = getRandom(m_M);
          const quint32 ycell = getRandom(m_M);
-         const quint32 time = getRandom(1, 11);
+         const quint32 time = getRandom(kMinRandomT, kMaxRandomT);
          createNewFly(time, xcell, ycell);
          updateCell(xcell, ycell);
      }
