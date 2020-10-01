@@ -84,9 +84,9 @@ TableView {
                             var x = parent.parent.parent.x
                             var y = parent.parent.parent.y
 
-                            console.log(x, y)
-                            console.log(tableView.contentItem.height)
-                            console.log(tableView.height)
+                            //console.log(x, y)
+                            //console.log(tableView.contentItem.height)
+                            //console.log(tableView.height)
 
                             const xf = (x >= tableView.contentItem.width / 2)
                             const yf = (y >= tableView.contentItem.height / 2)
