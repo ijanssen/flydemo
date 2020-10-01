@@ -67,7 +67,7 @@ TableView {
             anchors.margins: 1
             spacing: 2
             Repeater {
-                model: fcount
+                model: flylist
                 delegate: Fly {
                     dead: modelData[0]
                     t: modelData[1]

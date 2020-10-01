@@ -50,19 +50,8 @@ QVariant FieldModel::data(const QModelIndex &index, int role) const
     if (index.row() < 0 || index.row() >= static_cast<int>(m_M))
         return QVariant();
     switch (role) {
-    case Qt::DisplayRole:
-        return "!!!";
-    case CountRole: {
+    case FlyListRole:
         return field[index.row()][index.column()];
-        /*
-        const CellType &cell = field[index.row()][index.column()];
-        QVariantList list;
-        for (const FlyPtr &fly : cell) {
-            list.append(QVariant(QVariantList {fly->dead, 2, fly->m_T}));
-        }
-        ///qDebug() << list;
-        return list;*/
-        }
         break;
     case EditCellRole:
         return editField[index.row()][index.column()];
@@ -95,7 +84,7 @@ QHash<int, QByteArray> FieldModel::roleNames() const
 {
     return {
         {Qt::DisplayRole, QByteArrayLiteral("display")},
-        {CountRole, QByteArrayLiteral("fcount")},
+        {FlyListRole, QByteArrayLiteral("flylist")},
         {EditCellRole, QByteArrayLiteral("editCell")},
     };
 }

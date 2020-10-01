@@ -19,7 +19,7 @@ public:
     quint64 currTime() const;
 
     enum Roles {
-        CountRole = Qt::UserRole + 1,
+        FlyListRole = Qt::UserRole + 1,
         EditCellRole = Qt::UserRole + 2
     };
 
